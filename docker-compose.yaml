@@ -1,0 +1,39 @@
+version: "3.7"
+
+networks:
+    server:
+
+services:
+    web:
+        build:
+            context: ./docker/Apache
+        container_name: apache
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - server
+        depends_on:
+            - php
+    php:
+        build:
+            context: ./docker/PHP
+        container_name: php
+        user: 'www-data:www-data'
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - server
+    nodejs:
+        image: node:lts-buster-slim
+        container_name: nodejs
+        ports:
+            - "3000:3000"
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - server
