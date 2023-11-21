@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -7,12 +7,17 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+    </head>
     <body>
+        <div {{ react_component('NavMenu', { 'isAuthenticated': false }) }}></div>
         <h2>Hi everybody !</h2>
 
-        <div {{ react_component('Hello', { 'fullName': 'JOHN DOE' }) }}>
-            Loading ...
-        </div>
+        <div {{
+            react_component(
+                'DefaultButton',
+                { 'label': label }
+            )
+        }}></div>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

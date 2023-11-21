@@ -3,7 +3,9 @@
         "module": "commonjs",
         "target": "es6",
         "sourceMap": true,
-        "jsx": "react"
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./assets/react",
     },
     "exclude": [
         "node_modules"

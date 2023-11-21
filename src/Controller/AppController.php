@@ -13,6 +13,14 @@ class AppController extends AbstractController
     #[Route(path: '/', name: 'index')]
     public function index(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'label' => 'CLICK ME !',
+        ]);
+    }
+
+    #[Route(path: '/authenticate', name: 'authenticate')]
+    public function authenticate(): Response
+    {
+        return $this->render('authenticate.html.twig');
     }
 }
